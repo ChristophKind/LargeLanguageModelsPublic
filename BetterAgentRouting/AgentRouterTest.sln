@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgentRouterTest", "AgentRouterTest.csproj", "{5B1D7F8E-372C-B0D3-F2CC-6A02A5BC79EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B1D7F8E-372C-B0D3-F2CC-6A02A5BC79EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B1D7F8E-372C-B0D3-F2CC-6A02A5BC79EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B1D7F8E-372C-B0D3-F2CC-6A02A5BC79EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B1D7F8E-372C-B0D3-F2CC-6A02A5BC79EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A5F4394-22CB-4FED-9075-7DE8CF1AA297}
+	EndGlobalSection
+EndGlobal
