@@ -1,6 +1,6 @@
 ---
 title: "Fine-Tuning von Large Language Models: Ein praktischer Leitfaden mit Python und Ollama"
-date: 2025-01-13
+date: 2025-08-13
 author: "Christoph Kind"
 tags: ["LLM", "Fine-Tuning", "Python", "Ollama", "Machine Learning", "Phi-3"]
 description: "Lerne Schritt für Schritt, wie du Large Language Models für deine spezifischen Aufgaben fine-tunest und sie mit Ollama nutzt"
