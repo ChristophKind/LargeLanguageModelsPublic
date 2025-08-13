@@ -11,7 +11,19 @@ Dieses Projekt ermöglicht das Fine-Tuning des Phi-3-mini Modells zur automatisc
 
 ## Installation
 
-### 1. Virtual Environment aktivieren
+### 1. Virtual Environment erstellen
+
+Falls noch kein Virtual Environment vorhanden ist:
+
+```bash
+# Virtual Environment erstellen
+python -m venv venv
+
+# Oder mit python3 (falls python nicht funktioniert)
+python3 -m venv venv
+```
+
+### 2. Virtual Environment aktivieren
 
 ```bash
 # Linux/Mac
@@ -21,7 +33,7 @@ source venv/bin/activate
 venv\Scripts\activate
 ```
 
-### 2. Abhängigkeiten installieren
+### 3. Abhängigkeiten installieren
 
 ```bash
 pip install -r requirements.txt
@@ -29,7 +41,7 @@ pip install -r requirements.txt
 
 **Hinweis**: Die Installation kann beim ersten Mal 10-15 Minuten dauern, da große ML-Bibliotheken heruntergeladen werden.
 
-### 3. CUDA-Unterstützung prüfen (optional)
+### 4. CUDA-Unterstützung prüfen (optional)
 
 ```bash
 python -c "import torch; print(f'CUDA verfügbar: {torch.cuda.is_available()}')"
