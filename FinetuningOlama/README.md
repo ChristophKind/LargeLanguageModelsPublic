@@ -12,7 +12,7 @@ Dieses Projekt ermöglicht das Fine-Tuning des Phi-3-mini Modells zur automatisc
 
 ## Installation
 
-### 1. Virtual Environment erstellen und aktivieren
+### 1. Virtual Environment aktivieren
 
 ```bash
 # Virtual Environment erstellen (einmalig)
@@ -25,7 +25,7 @@ source venv/bin/activate
 venv\Scripts\activate
 ```
 
-### 2. Abhängigkeiten installieren
+### 3. Abhängigkeiten installieren
 
 ```bash
 pip install -r requirements.txt
@@ -33,31 +33,7 @@ pip install -r requirements.txt
 
 **Hinweis**: Die Installation kann beim ersten Mal 10-15 Minuten dauern, da große ML-Bibliotheken heruntergeladen werden.
 
-### 3. Zusätzliche Abhängigkeiten für GGUF-Export installieren
-
-```bash
-# mistral_common für Konvertierung
-pip install mistral_common
-```
-
-### 4. llama.cpp für GGUF-Quantisierung bauen
-
-**Wichtig**: Dies ist erforderlich für den GGUF-Export nach dem Training!
-
-```bash
-# Build-Tools installieren (benötigt sudo)
-sudo apt-get update && sudo apt-get install -y cmake build-essential
-
-# llama.cpp bauen
-cd llama.cpp
-cmake -B build -DLLAMA_CURL=OFF
-cmake --build build --config Release -j$(nproc)
-cd ..
-```
-
-**Hinweis**: Der Build-Prozess dauert ca. 2-5 Minuten je nach System.
-
-### 5. CUDA-Unterstützung prüfen (optional)
+### 3. CUDA-Unterstützung prüfen (optional)
 
 ```bash
 python -c "import torch; print(f'CUDA verfügbar: {torch.cuda.is_available()}')"
