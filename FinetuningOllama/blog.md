@@ -8,6 +8,10 @@ description: "Lerne Schritt für Schritt, wie du Large Language Models für dein
 
 # Fine-Tuning von Large Language Models: Ein praktischer Leitfaden mit Python und Ollama
 
+## Artikel-Übersicht
+
+Dieser Leitfaden zeigt dir, wie du Large Language Models mit Python fine-tunest und anschließend in Ollama für lokales Deployment integrierst. Wir beginnen mit den Grundkonzepten des Fine-Tunings und erklären die Vorteile gegenüber dem Training von Grund auf. Du lernst die drei Hauptanwendungsfälle kennen: konsistente Formatierung, domänenspezifisches Wissen und Kostenoptimierung. Im praktischen Teil behandeln wir zunächst die Datenvorbereitung und -formatierung mit konkreten Code-Beispielen. Danach folgt die Installation und Konfiguration des Phi-3-mini Modells mit der Unsloth-Bibliothek. Ein wichtiger Baustein ist die Verwendung von LoRA-Adaptern, die effizientes Training ermöglichen, indem nur etwa 3% der Modellparameter angepasst werden. Der Artikel führt dich durch den kompletten Trainingsprozess, vergleicht die Performance zwischen GPU und CPU, und zeigt Best Practices für die Modellvalidierung. Anschließend exportieren wir das trainierte Modell ins GGUF-Format und integrieren es in Ollama, sodass es lokal auf deinem Rechner läuft. Am Ende findest du praktische Tipps für eigene Projekte sowie einen Link zum vollständigen Code-Repository mit allen Beispielen und Konfigurationsdateien.
+
 ## Einleitung: Was ist Fine-Tuning und warum ist es wichtig?
 
 Heute zeige ich dir, wie du Large Language Models (LLMs) in Python fine-tunen und anschließend in Ollama nutzen kannst. Ja, du hast richtig gelesen – Python! Ich musste diesmal von meiner geliebten Programmiersprache C# abweichen, da sich Python im Bereich Machine Learning und KI einfach als die beste Wahl etabliert hat. Die verfügbaren Bibliotheken und die Community-Unterstützung sind hier unschlagbar.
