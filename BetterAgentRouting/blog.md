@@ -1,3 +1,17 @@
+---
+title: Multi-Agent-Routing-Lösungen - Wer kommt wann dran? 3 clevere Ansätze gegen vergessliche Chatbots
+meta-title: Multi-Agent-Routing - Wer kommt wann dran? 3 Lösungen mit Semantic Kernel
+meta-description: Erfahre, wie du mit drei Routing-Lösungen (Stateful, Agent-Ownership, Sticky Sessions) entscheidest, welcher Agent wann dran ist. Mit praktischen Code-Beispielen in C# und Microsoft Semantic Kernel.
+summary: Multi-Agent-Systeme leiden oft unter inkonsistenten Router-Entscheidungen - wer kommt wann dran? Dieser Artikel zeigt drei praxiserprobte Routing-Lösungen mit Microsoft Semantic Kernel - Stateful Routing mit dynamischen Schwellenwerten, Agent-Ownership für selbstverwaltete Kontrolle und Sticky Sessions für maximale Stabilität.
+author: Christoph Kind
+layout: Article
+project: christophkind.de
+category: blog
+date: 2024-09-26T14:00:00.000Z
+slug: /multi-agent-routing-wer-kommt-wann-dran
+syncwithcontentdb: true
+last_updated: 09.08.2025, 09:24:53
+---
 # Wenn Chatbots plötzlich vergesslich werden: Drei clevere Lösungen für konsistente KI-Workflows
 
 ## Das nervige Problem, das wir alle kennen
@@ -308,6 +322,7 @@ class Program
 }
 ```
 
+
 ## Real-World Szenarien: So reagieren die Router
 
 Lass uns mal schauen, wie die verschiedenen Ansätze in der Praxis ticken:
@@ -544,3 +559,18 @@ public class LearningRouter : IRouter
 **Die wichtigste Lektion**: Es gibt keine Universallösung. Versteh deinen Use-Case, wähl den passenden Ansatz (oder mix sie), und deine User werden's dir danken.
 
 Die Zukunft der KI liegt nicht in einem Uber-Bot, der alles kann, sondern in cleverer Orchestrierung von Spezialisten. Und der Router? Der ist der heimliche MVP, der dafür sorgt, dass alles smooth läuft – auch wenn der User mal total abdriftet. Respekt an alle Router da draußen!
+
+
+## Code Repository
+
+Den vollständigen Code zu allen drei Routing-Ansätzen findest du im GitHub-Repository:
+
+**[https://github.com/ChristophKind/LargeLanguageModelsPublic](https://github.com/ChristophKind/LargeLanguageModelsPublic)**
+
+Dort kannst du:
+- Den kompletten Quellcode herunterladen und direkt ausprobieren
+- Die vollständige Implementierung aller drei Router-Varianten studieren
+- Die Beispiel-Agents (BookingAgent, SupportAgent, KnowledgeAgent) im Detail ansehen
+- Eigene Erweiterungen und Anpassungen vornehmen
+
+Das Repository enthält eine lauffähige .NET-Lösung mit Microsoft Semantic Kernel, die du als Basis für deine eigenen Multi-Agent-Systeme verwenden kannst.

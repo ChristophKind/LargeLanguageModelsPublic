@@ -4,6 +4,9 @@
 # Ignore .env files
 .env
 
+# Ignore contentdb.json files in every folder
+**/contentdb.json
+
 # Ignore all folders starting with a dot
 .*/
 

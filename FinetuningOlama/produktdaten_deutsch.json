@@ -1,0 +1,443 @@
+[
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Samsung Galaxy S24</h2><span class='preis'>€ 899</span><span class='kategorie'>Smartphone</span><span class='marke'>Samsung</span></div>",
+    "output": {
+      "name": "Samsung Galaxy S24",
+      "preis": "€ 899",
+      "kategorie": "Smartphone",
+      "marke": "Samsung"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Apple MacBook Air M3</h2><span class='preis'>€ 1.299</span><span class='kategorie'>Laptop</span><span class='marke'>Apple</span></div>",
+    "output": {
+      "name": "Apple MacBook Air M3",
+      "preis": "€ 1.299",
+      "kategorie": "Laptop",
+      "marke": "Apple"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Sony WH-1000XM5</h2><span class='preis'>€ 379</span><span class='kategorie'>Kopfhörer</span><span class='marke'>Sony</span></div>",
+    "output": {
+      "name": "Sony WH-1000XM5",
+      "preis": "€ 379",
+      "kategorie": "Kopfhörer",
+      "marke": "Sony"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Bosch Professional GSR 18V</h2><span class='preis'>€ 149</span><span class='kategorie'>Werkzeug</span><span class='marke'>Bosch</span></div>",
+    "output": {
+      "name": "Bosch Professional GSR 18V",
+      "preis": "€ 149",
+      "kategorie": "Werkzeug",
+      "marke": "Bosch"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Philips Hue Starter Kit</h2><span class='preis'>€ 199</span><span class='kategorie'>Smart Home</span><span class='marke'>Philips</span></div>",
+    "output": {
+      "name": "Philips Hue Starter Kit",
+      "preis": "€ 199",
+      "kategorie": "Smart Home",
+      "marke": "Philips"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Kindle Paperwhite</h2><span class='preis'>€ 139</span><span class='kategorie'>E-Reader</span><span class='marke'>Amazon</span></div>",
+    "output": {
+      "name": "Kindle Paperwhite",
+      "preis": "€ 139",
+      "kategorie": "E-Reader",
+      "marke": "Amazon"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Dyson V15 Detect</h2><span class='preis'>€ 649</span><span class='kategorie'>Staubsauger</span><span class='marke'>Dyson</span></div>",
+    "output": {
+      "name": "Dyson V15 Detect",
+      "preis": "€ 649",
+      "kategorie": "Staubsauger",
+      "marke": "Dyson"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Nintendo Switch OLED</h2><span class='preis'>€ 359</span><span class='kategorie'>Spielkonsole</span><span class='marke'>Nintendo</span></div>",
+    "output": {
+      "name": "Nintendo Switch OLED",
+      "preis": "€ 359",
+      "kategorie": "Spielkonsole",
+      "marke": "Nintendo"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Braun Series 9 Pro</h2><span class='preis'>€ 329</span><span class='kategorie'>Rasierer</span><span class='marke'>Braun</span></div>",
+    "output": {
+      "name": "Braun Series 9 Pro",
+      "preis": "€ 329",
+      "kategorie": "Rasierer",
+      "marke": "Braun"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Canon EOS R6 Mark II</h2><span class='preis'>€ 2.799</span><span class='kategorie'>Kamera</span><span class='marke'>Canon</span></div>",
+    "output": {
+      "name": "Canon EOS R6 Mark II",
+      "preis": "€ 2.799",
+      "kategorie": "Kamera",
+      "marke": "Canon"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Garmin Fenix 7</h2><span class='preis'>€ 699</span><span class='kategorie'>Smartwatch</span><span class='marke'>Garmin</span></div>",
+    "output": {
+      "name": "Garmin Fenix 7",
+      "preis": "€ 699",
+      "kategorie": "Smartwatch",
+      "marke": "Garmin"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>LG OLED55C3</h2><span class='preis'>€ 1.599</span><span class='kategorie'>Fernseher</span><span class='marke'>LG</span></div>",
+    "output": {
+      "name": "LG OLED55C3",
+      "preis": "€ 1.599",
+      "kategorie": "Fernseher",
+      "marke": "LG"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Bose QuietComfort Ultra</h2><span class='preis'>€ 499</span><span class='kategorie'>Kopfhörer</span><span class='marke'>Bose</span></div>",
+    "output": {
+      "name": "Bose QuietComfort Ultra",
+      "preis": "€ 499",
+      "kategorie": "Kopfhörer",
+      "marke": "Bose"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Siemens EQ.9 Plus</h2><span class='preis'>€ 1.899</span><span class='kategorie'>Kaffeevollautomat</span><span class='marke'>Siemens</span></div>",
+    "output": {
+      "name": "Siemens EQ.9 Plus",
+      "preis": "€ 1.899",
+      "kategorie": "Kaffeevollautomat",
+      "marke": "Siemens"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Thermomix TM6</h2><span class='preis'>€ 1.399</span><span class='kategorie'>Küchenmaschine</span><span class='marke'>Vorwerk</span></div>",
+    "output": {
+      "name": "Thermomix TM6",
+      "preis": "€ 1.399",
+      "kategorie": "Küchenmaschine",
+      "marke": "Vorwerk"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Xiaomi 13 Pro</h2><span class='preis'>€ 999</span><span class='kategorie'>Smartphone</span><span class='marke'>Xiaomi</span></div>",
+    "output": {
+      "name": "Xiaomi 13 Pro",
+      "preis": "€ 999",
+      "kategorie": "Smartphone",
+      "marke": "Xiaomi"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Microsoft Surface Pro 9</h2><span class='preis'>€ 1.299</span><span class='kategorie'>Tablet</span><span class='marke'>Microsoft</span></div>",
+    "output": {
+      "name": "Microsoft Surface Pro 9",
+      "preis": "€ 1.299",
+      "kategorie": "Tablet",
+      "marke": "Microsoft"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Asus ROG Zephyrus G14</h2><span class='preis'>€ 1.799</span><span class='kategorie'>Gaming-Laptop</span><span class='marke'>Asus</span></div>",
+    "output": {
+      "name": "Asus ROG Zephyrus G14",
+      "preis": "€ 1.799",
+      "kategorie": "Gaming-Laptop",
+      "marke": "Asus"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>JBL Charge 5</h2><span class='preis'>€ 149</span><span class='kategorie'>Bluetooth-Lautsprecher</span><span class='marke'>JBL</span></div>",
+    "output": {
+      "name": "JBL Charge 5",
+      "preis": "€ 149",
+      "kategorie": "Bluetooth-Lautsprecher",
+      "marke": "JBL"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Miele Complete C3</h2><span class='preis'>€ 279</span><span class='kategorie'>Staubsauger</span><span class='marke'>Miele</span></div>",
+    "output": {
+      "name": "Miele Complete C3",
+      "preis": "€ 279",
+      "kategorie": "Staubsauger",
+      "marke": "Miele"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Huawei Watch GT 4</h2><span class='preis'>€ 249</span><span class='kategorie'>Smartwatch</span><span class='marke'>Huawei</span></div>",
+    "output": {
+      "name": "Huawei Watch GT 4",
+      "preis": "€ 249",
+      "kategorie": "Smartwatch",
+      "marke": "Huawei"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Panasonic Lumix GH6</h2><span class='preis'>€ 2.199</span><span class='kategorie'>Kamera</span><span class='marke'>Panasonic</span></div>",
+    "output": {
+      "name": "Panasonic Lumix GH6",
+      "preis": "€ 2.199",
+      "kategorie": "Kamera",
+      "marke": "Panasonic"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>DeLonghi Magnifica S</h2><span class='preis'>€ 399</span><span class='kategorie'>Kaffeevollautomat</span><span class='marke'>DeLonghi</span></div>",
+    "output": {
+      "name": "DeLonghi Magnifica S",
+      "preis": "€ 399",
+      "kategorie": "Kaffeevollautomat",
+      "marke": "DeLonghi"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Fitbit Charge 6</h2><span class='preis'>€ 159</span><span class='kategorie'>Fitness-Tracker</span><span class='marke'>Fitbit</span></div>",
+    "output": {
+      "name": "Fitbit Charge 6",
+      "preis": "€ 159",
+      "kategorie": "Fitness-Tracker",
+      "marke": "Fitbit"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Lenovo ThinkPad X1 Carbon</h2><span class='preis'>€ 1.999</span><span class='kategorie'>Business-Laptop</span><span class='marke'>Lenovo</span></div>",
+    "output": {
+      "name": "Lenovo ThinkPad X1 Carbon",
+      "preis": "€ 1.999",
+      "kategorie": "Business-Laptop",
+      "marke": "Lenovo"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Sennheiser Momentum 4</h2><span class='preis'>€ 349</span><span class='kategorie'>Kopfhörer</span><span class='marke'>Sennheiser</span></div>",
+    "output": {
+      "name": "Sennheiser Momentum 4",
+      "preis": "€ 349",
+      "kategorie": "Kopfhörer",
+      "marke": "Sennheiser"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Makita DHP486</h2><span class='preis'>€ 189</span><span class='kategorie'>Akkuschrauber</span><span class='marke'>Makita</span></div>",
+    "output": {
+      "name": "Makita DHP486",
+      "preis": "€ 189",
+      "kategorie": "Akkuschrauber",
+      "marke": "Makita"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Ring Video Doorbell 4</h2><span class='preis'>€ 199</span><span class='kategorie'>Smart Home</span><span class='marke'>Ring</span></div>",
+    "output": {
+      "name": "Ring Video Doorbell 4",
+      "preis": "€ 199",
+      "kategorie": "Smart Home",
+      "marke": "Ring"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Google Pixel 8 Pro</h2><span class='preis'>€ 1.099</span><span class='kategorie'>Smartphone</span><span class='marke'>Google</span></div>",
+    "output": {
+      "name": "Google Pixel 8 Pro",
+      "preis": "€ 1.099",
+      "kategorie": "Smartphone",
+      "marke": "Google"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>HP Envy x360</h2><span class='preis'>€ 899</span><span class='kategorie'>Convertible-Laptop</span><span class='marke'>HP</span></div>",
+    "output": {
+      "name": "HP Envy x360",
+      "preis": "€ 899",
+      "kategorie": "Convertible-Laptop",
+      "marke": "HP"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Oral-B iO Series 9</h2><span class='preis'>€ 299</span><span class='kategorie'>Elektrische Zahnbürste</span><span class='marke'>Oral-B</span></div>",
+    "output": {
+      "name": "Oral-B iO Series 9",
+      "preis": "€ 299",
+      "kategorie": "Elektrische Zahnbürste",
+      "marke": "Oral-B"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Nikon Z9</h2><span class='preis'>€ 5.999</span><span class='kategorie'>Profi-Kamera</span><span class='marke'>Nikon</span></div>",
+    "output": {
+      "name": "Nikon Z9",
+      "preis": "€ 5.999",
+      "kategorie": "Profi-Kamera",
+      "marke": "Nikon"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Polar Vantage V3</h2><span class='preis'>€ 599</span><span class='kategorie'>Sportuhr</span><span class='marke'>Polar</span></div>",
+    "output": {
+      "name": "Polar Vantage V3",
+      "preis": "€ 599",
+      "kategorie": "Sportuhr",
+      "marke": "Polar"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Sonos Era 300</h2><span class='preis'>€ 499</span><span class='kategorie'>Smart Speaker</span><span class='marke'>Sonos</span></div>",
+    "output": {
+      "name": "Sonos Era 300",
+      "preis": "€ 499",
+      "kategorie": "Smart Speaker",
+      "marke": "Sonos"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>AEG Lavamat L7FE74485</h2><span class='preis'>€ 699</span><span class='kategorie'>Waschmaschine</span><span class='marke'>AEG</span></div>",
+    "output": {
+      "name": "AEG Lavamat L7FE74485",
+      "preis": "€ 699",
+      "kategorie": "Waschmaschine",
+      "marke": "AEG"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Weber Genesis E-335</h2><span class='preis'>€ 1.399</span><span class='kategorie'>Gasgrill</span><span class='marke'>Weber</span></div>",
+    "output": {
+      "name": "Weber Genesis E-335",
+      "preis": "€ 1.399",
+      "kategorie": "Gasgrill",
+      "marke": "Weber"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>iPad Pro 12.9</h2><span class='preis'>€ 1.449</span><span class='kategorie'>Tablet</span><span class='marke'>Apple</span></div>",
+    "output": {
+      "name": "iPad Pro 12.9",
+      "preis": "€ 1.449",
+      "kategorie": "Tablet",
+      "marke": "Apple"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Razer DeathAdder V3</h2><span class='preis'>€ 159</span><span class='kategorie'>Gaming-Maus</span><span class='marke'>Razer</span></div>",
+    "output": {
+      "name": "Razer DeathAdder V3",
+      "preis": "€ 159",
+      "kategorie": "Gaming-Maus",
+      "marke": "Razer"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Beko RCSA300K30XB</h2><span class='preis'>€ 449</span><span class='kategorie'>Kühl-Gefrierkombination</span><span class='marke'>Beko</span></div>",
+    "output": {
+      "name": "Beko RCSA300K30XB",
+      "preis": "€ 449",
+      "kategorie": "Kühl-Gefrierkombination",
+      "marke": "Beko"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>OnePlus 12</h2><span class='preis'>€ 899</span><span class='kategorie'>Smartphone</span><span class='marke'>OnePlus</span></div>",
+    "output": {
+      "name": "OnePlus 12",
+      "preis": "€ 899",
+      "kategorie": "Smartphone",
+      "marke": "OnePlus"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Dell XPS 15</h2><span class='preis'>€ 2.199</span><span class='kategorie'>Premium-Laptop</span><span class='marke'>Dell</span></div>",
+    "output": {
+      "name": "Dell XPS 15",
+      "preis": "€ 2.199",
+      "kategorie": "Premium-Laptop",
+      "marke": "Dell"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Marshall Emberton II</h2><span class='preis'>€ 169</span><span class='kategorie'>Bluetooth-Lautsprecher</span><span class='marke'>Marshall</span></div>",
+    "output": {
+      "name": "Marshall Emberton II",
+      "preis": "€ 169",
+      "kategorie": "Bluetooth-Lautsprecher",
+      "marke": "Marshall"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Kärcher WV 6 Plus</h2><span class='preis'>€ 89</span><span class='kategorie'>Fenstersauger</span><span class='marke'>Kärcher</span></div>",
+    "output": {
+      "name": "Kärcher WV 6 Plus",
+      "preis": "€ 89",
+      "kategorie": "Fenstersauger",
+      "marke": "Kärcher"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Amazfit GTR 4</h2><span class='preis'>€ 199</span><span class='kategorie'>Smartwatch</span><span class='marke'>Amazfit</span></div>",
+    "output": {
+      "name": "Amazfit GTR 4",
+      "preis": "€ 199",
+      "kategorie": "Smartwatch",
+      "marke": "Amazfit"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Fujifilm X-T5</h2><span class='preis'>€ 1.899</span><span class='kategorie'>Systemkamera</span><span class='marke'>Fujifilm</span></div>",
+    "output": {
+      "name": "Fujifilm X-T5",
+      "preis": "€ 1.899",
+      "kategorie": "Systemkamera",
+      "marke": "Fujifilm"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Jura E8</h2><span class='preis'>€ 1.099</span><span class='kategorie'>Kaffeevollautomat</span><span class='marke'>Jura</span></div>",
+    "output": {
+      "name": "Jura E8",
+      "preis": "€ 1.099",
+      "kategorie": "Kaffeevollautomat",
+      "marke": "Jura"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Suunto 9 Peak Pro</h2><span class='preis'>€ 499</span><span class='kategorie'>GPS-Uhr</span><span class='marke'>Suunto</span></div>",
+    "output": {
+      "name": "Suunto 9 Peak Pro",
+      "preis": "€ 499",
+      "kategorie": "GPS-Uhr",
+      "marke": "Suunto"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Acer Predator Helios 300</h2><span class='preis'>€ 1.499</span><span class='kategorie'>Gaming-Laptop</span><span class='marke'>Acer</span></div>",
+    "output": {
+      "name": "Acer Predator Helios 300",
+      "preis": "€ 1.499",
+      "kategorie": "Gaming-Laptop",
+      "marke": "Acer"
+    }
+  },
+  {
+    "input": "Extrahiere die Produktinformationen:\n<div class='produkt'><h2>Audio-Technica ATH-M50xBT2</h2><span class='preis'>€ 199</span><span class='kategorie'>Studio-Kopfhörer</span><span class='marke'>Audio-Technica</span></div>",
+    "output": {
+      "name": "Audio-Technica ATH-M50xBT2",
+      "preis": "€ 199",
+      "kategorie": "Studio-Kopfhörer",
+      "marke": "Audio-Technica"
+    }
+  }
+]

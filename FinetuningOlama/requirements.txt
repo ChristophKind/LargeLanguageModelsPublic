@@ -1,0 +1,28 @@
+# Fine-Tuning Abhängigkeiten für Phi-3-mini
+# Python 3.8+ erforderlich
+
+# Basis-Pakete
+torch>=2.1.0
+transformers>=4.36.0
+datasets>=2.14.0
+accelerate>=0.24.0
+bitsandbytes>=0.41.0
+
+# Unsloth für optimiertes Training
+# Installiert die neueste Version mit GPU-Unterstützung
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+
+# TRL für Supervised Fine-Tuning
+trl>=0.7.0
+
+# PEFT für LoRA
+peft>=0.6.0
+
+# Weitere nützliche Pakete
+numpy>=1.24.0
+tqdm>=4.65.0
+sentencepiece>=0.1.99
+protobuf>=3.20.0
+
+# Für GGUF-Export
+gguf>=0.6.0
