@@ -22,8 +22,10 @@ class PhiFineTuner:
         Initialisierung des Fine-Tuners
         
         Args:
-            datei_pfad: Pfad zur JSON-Trainingsdatei
-            ausgabe_ordner: Ordner für Ausgabedateien
+            datei_pfad: Pfad zur JSON-Trainingsdatei mit Produktdaten
+            ausgabe_ordner: Ordner für Ausgabedateien (Checkpoints und GGUF-Export)
+        
+        Die Klasse prüft automatisch die GPU-Verfügbarkeit und nutzt CUDA wenn möglich.
         """
         self.datei_pfad = datei_pfad
         self.ausgabe_ordner = ausgabe_ordner
@@ -96,22 +98,28 @@ class PhiFineTuner:
         print("✓ Modell und Tokenizer geladen")
     
     def konfiguriere_lora(self):
-        """Konfiguriert LoRA-Adapter für effizientes Fine-Tuning"""
+        """Konfiguriert LoRA-Adapter für effizientes Fine-Tuning
+        
+        LoRA (Low-Rank Adaptation) ermöglicht effizientes Fine-Tuning durch:
+        - Nur ~3% der Parameter werden trainiert (119M von 3.9B)
+        - Drastisch reduzierter Speicherbedarf
+        - Schnelleres Training bei vergleichbaren Ergebnissen
+        """
         print("\nKonfiguriere LoRA-Adapter...")
         
         self.model = FastLanguageModel.get_peft_model(
             self.model,
-            r=64,  # LoRA Rang - höher = mehr Kapazität, mehr Speicher
-            target_modules=[
-                "q_proj", "k_proj", "v_proj", "o_proj",
-                "gate_proj", "up_proj", "down_proj",
+            r=64,  # LoRA Rang - 64 ist ein guter Kompromiss zwischen Qualität und Speicher
+            target_modules=[  # Diese Module werden mit LoRA-Adaptern versehen
+                "q_proj", "k_proj", "v_proj", "o_proj",  # Attention-Layer
+                "gate_proj", "up_proj", "down_proj",  # MLP-Layer
             ],
-            lora_alpha=128,  # LoRA Skalierungsfaktor (normalerweise 2x Rang)
-            lora_dropout=0,  # Dropout (0 ist optimiert)
-            bias="none",  # Bias-Behandlung
-            use_gradient_checkpointing="unsloth",  # Optimierte Gradient-Checkpoints
-            random_state=3407,
-            use_rslora=False,  # Rang-stabilisiertes LoRA
+            lora_alpha=128,  # Skalierungsfaktor (2x Rang ist Standard für Stabilität)
+            lora_dropout=0,  # Kein Dropout für maximale Leistung
+            bias="none",  # Keine Bias-Anpassung nötig
+            use_gradient_checkpointing="unsloth",  # Speicher-optimierte Gradients
+            random_state=3407,  # Reproduzierbare Ergebnisse
+            use_rslora=False,  # Standard LoRA (nicht rank-stabilized)
             loftq_config=None,
         )
         
@@ -223,7 +231,18 @@ class PhiFineTuner:
         Exportiert das Modell im GGUF-Format für Ollama
         
         Args:
-            quantisierung: Quantisierungsmethode (z.B. q4_k_m, q5_k_m, q8_0)
+            quantisierung: Quantisierungsmethode
+                - q4_k_m: 4-bit Quantisierung (empfohlen, ~2.2GB)
+                - q5_k_m: 5-bit Quantisierung (~2.7GB)
+                - q8_0: 8-bit Quantisierung (~4GB)
+        
+        Voraussetzungen:
+            - llama.cpp muss gebaut sein (cmake und make)
+            - mistral_common muss installiert sein
+        
+        Der Export erstellt zwei Dateien:
+            1. unsloth.BF16.gguf - Volle Präzision (~7.2GB)
+            2. unsloth.Q4_K_M.gguf - Quantisierte Version (~2.2GB)
         """
         print(f"\nExportiere Modell als GGUF (Quantisierung: {quantisierung})...")
         
@@ -234,15 +253,22 @@ class PhiFineTuner:
             quantization_method=quantisierung
         )
         
-        # GGUF-Datei finden
+        # GGUF-Datei finden (suche nach der quantisierten Version)
         gguf_dateien = [f for f in os.listdir(gguf_ordner) if f.endswith(".gguf")]
-        if gguf_dateien:
-            gguf_pfad = os.path.join(gguf_ordner, gguf_dateien[0])
+        quantisierte_datei = None
+        for datei in gguf_dateien:
+            if quantisierung.upper().replace("_", "-") in datei.upper():
+                quantisierte_datei = datei
+                break
+        
+        if quantisierte_datei:
+            gguf_pfad = os.path.join(gguf_ordner, quantisierte_datei)
             print(f"✓ GGUF-Export erfolgreich: {gguf_pfad}")
             print(f"\nDu kannst das Modell jetzt mit Ollama verwenden:")
             print(f"ollama create mein-phi-modell -f {gguf_pfad}")
         else:
-            print("⚠ Warnung: Keine GGUF-Datei gefunden")
+            print("⚠ Warnung: GGUF-Export möglicherweise unvollständig")
+            print("  Prüfe ob llama.cpp korrekt gebaut wurde")
 
 
 def main():
@@ -322,7 +348,8 @@ def main():
     # Modell testen
     tuner.teste_modell()
     
-    # GGUF exportieren
+    # GGUF exportieren (nur nach erfolgreichem Training)
+    # Hinweis: Benötigt gebautes llama.cpp und mistral_common
     if not args.kein_export and not args.nur_test:
         tuner.exportiere_gguf()
     

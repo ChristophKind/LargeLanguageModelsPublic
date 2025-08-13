@@ -7,17 +7,21 @@ Dieses Projekt ermöglicht das Fine-Tuning des Phi-3-mini Modells zur automatisc
 - Python 3.8 oder höher
 - NVIDIA GPU mit CUDA-Unterstützung (optional, aber empfohlen)
 - Mindestens 8 GB RAM (16 GB empfohlen)
-- Ca. 10 GB freier Speicherplatz
+- Ca. 15 GB freier Speicherplatz (für Modell und GGUF-Export)
+- cmake und build-essential (für GGUF-Export)
 
 ## Installation
 
-### 1. Virtual Environment aktivieren
+### 1. Virtual Environment erstellen und aktivieren
 
 ```bash
-# Linux/Mac
+# Virtual Environment erstellen (einmalig)
+python3 -m venv venv
+
+# Aktivieren - Linux/Mac
 source venv/bin/activate
 
-# Windows
+# Aktivieren - Windows
 venv\Scripts\activate
 ```
 
@@ -29,7 +33,31 @@ pip install -r requirements.txt
 
 **Hinweis**: Die Installation kann beim ersten Mal 10-15 Minuten dauern, da große ML-Bibliotheken heruntergeladen werden.
 
-### 3. CUDA-Unterstützung prüfen (optional)
+### 3. Zusätzliche Abhängigkeiten für GGUF-Export installieren
+
+```bash
+# mistral_common für Konvertierung
+pip install mistral_common
+```
+
+### 4. llama.cpp für GGUF-Quantisierung bauen
+
+**Wichtig**: Dies ist erforderlich für den GGUF-Export nach dem Training!
+
+```bash
+# Build-Tools installieren (benötigt sudo)
+sudo apt-get update && sudo apt-get install -y cmake build-essential
+
+# llama.cpp bauen
+cd llama.cpp
+cmake -B build -DLLAMA_CURL=OFF
+cmake --build build --config Release -j$(nproc)
+cd ..
+```
+
+**Hinweis**: Der Build-Prozess dauert ca. 2-5 Minuten je nach System.
+
+### 5. CUDA-Unterstützung prüfen (optional)
 
 ```bash
 python -c "import torch; print(f'CUDA verfügbar: {torch.cuda.is_available()}')"
@@ -45,10 +73,10 @@ python finetuning.py
 
 Das Programm wird:
 1. Die Trainingsdaten aus `produktdaten_deutsch.json` laden
-2. Das Phi-3-mini Basismodell herunterladen (beim ersten Mal)
+2. Das Phi-3-mini Basismodell herunterladen (beim ersten Mal, ca. 2.4 GB)
 3. Das Fine-Tuning für 3 Epochen durchführen
 4. Das trainierte Modell testen
-5. Eine GGUF-Datei für Ollama exportieren
+5. GGUF-Dateien für Ollama exportieren (BF16 und Q4_K_M)
 
 ### Erweiterte Optionen
 
@@ -111,15 +139,71 @@ Das Programm erkennt automatisch verfügbare NVIDIA GPUs und nutzt diese für da
 
 ### Modell mit Ollama verwenden
 
-Nach erfolgreichem Training findest du die GGUF-Datei im Ausgabeordner:
+Nach erfolgreichem Training und GGUF-Export findest du die quantisierte Datei im Ausgabeordner.
+
+#### 1. Modelfile erstellen
+
+Erstelle eine Datei namens `Modelfile` mit optimierten Parametern für das fine-getunte Modell:
+
+```dockerfile
+FROM ausgabe/gguf_final/unsloth.Q4_K_M.gguf
+
+TEMPLATE """{{ if .System }}<|system|>
+{{ .System }}<|end|>
+{{ end }}{{ if .Prompt }}<|user|>
+{{ .Prompt }}<|end|>
+{{ end }}<|assistant|>
+{{ .Response }}<|end|>
+"""
+
+PARAMETER temperature 0.3
+PARAMETER top_p 0.9
+PARAMETER top_k 40
+PARAMETER repeat_penalty 1.1
+PARAMETER stop <|end|>
+PARAMETER stop <|user|>
+PARAMETER stop <|assistant|>
+
+SYSTEM """Du bist ein Experte für die Extraktion von Produktinformationen aus HTML-Strukturen. Extrahiere die Produktdaten im JSON-Format."""
+```
+
+**Wichtig**: Die niedrige Temperatur (0.3) und repeat_penalty (1.1) sind wichtig für stabile Ausgaben!
+
+#### 2. Modell in Ollama importieren
 
 ```bash
-# Modell in Ollama importieren
-ollama create mein-produktextraktor -f ausgabe/gguf_modell/unsloth.Q4_K_M.gguf
+# Modell mit Modelfile erstellen (empfohlen)
+ollama create produktextraktor -f Modelfile
 
-# Modell testen
-ollama run mein-produktextraktor
+# Alternativ: Direkt importieren (ohne optimierte Parameter)
+ollama create produktextraktor-direkt -f ausgabe/gguf_final/unsloth.Q4_K_M.gguf
 ```
+
+#### 3. Modell testen
+
+```bash
+# Einfacher Test
+echo "Extrahiere die Produktinformationen:
+<div class='produkt'><h2>iPhone 15</h2><span class='preis'>€ 999</span><span class='kategorie'>Smartphone</span><span class='marke'>Apple</span></div>" | ollama run produktextraktor
+
+# Test über API mit optimierten Parametern
+curl -s http://localhost:11434/api/generate -d '{
+  "model": "produktextraktor",
+  "prompt": "Extrahiere die Produktinformationen:\n<div class=\"produkt\"><h2>MacBook Pro</h2><span class=\"preis\">€ 2.499</span><span class=\"kategorie\">Laptop</span><span class=\"marke\">Apple</span></div>",
+  "stream": false,
+  "options": {
+    "temperature": 0.3,
+    "top_p": 0.9,
+    "max_tokens": 200
+  }
+}' | python3 -c "import sys, json; print(json.load(sys.stdin)['response'])"
+```
+
+#### 4. Verfügbare GGUF-Dateien
+
+Nach dem Export werden zwei GGUF-Dateien erstellt:
+- `unsloth.BF16.gguf` (ca. 7.2 GB) - Volle Präzision
+- `unsloth.Q4_K_M.gguf` (ca. 2.2 GB) - Quantisierte Version (empfohlen für Ollama)
 
 ### Modell in eigenem Code verwenden
 
@@ -154,13 +238,91 @@ Falls Module nicht gefunden werden:
 1. Virtual Environment aktiviert? 
 2. Alle Requirements installiert?
 3. `pip install --upgrade -r requirements.txt` ausführen
+4. Für GGUF-Export: `pip install mistral_common`
+
+### GGUF-Export-Fehler
+
+#### Fehler: "llama-quantize not found"
+**Lösung**: llama.cpp muss gebaut werden:
+```bash
+cd llama.cpp
+cmake -B build -DLLAMA_CURL=OFF
+cmake --build build --config Release -j$(nproc)
+cd ..
+```
+
+#### Fehler: "No module named 'mistral_common'"
+**Lösung**: 
+```bash
+pip install mistral_common
+```
+
+#### Alternative: Nachträgliche GGUF-Konvertierung
+Falls der Export während des Trainings fehlschlägt, kann das gespeicherte Modell nachträglich konvertiert werden:
+```bash
+python convert_to_gguf.py
+```
+
+### Bekannte Probleme und Lösungen
+
+#### Modell-Repetition
+**Problem**: Das Modell wiederholt Ausgaben endlos
+**Lösung**: 
+- Temperatur reduzieren: `temperature 0.3` statt 0.7
+- Repeat penalty erhöhen: `repeat_penalty 1.1`
+- Stop-Token korrekt setzen: `<|end|>`
+
+#### Unvollständige JSON-Ausgabe
+**Problem**: JSON wird nicht vollständig generiert
+**Lösung**:
+- Max tokens erhöhen: `max_tokens 200` oder mehr
+- Training mit mehr Epochen wiederholen: `--epochen 5`
+
+#### Ollama-Import schlägt fehl
+**Problem**: "Error: command must be one of..."
+**Lösung**: Modelfile verwenden statt direktem GGUF-Import:
+```bash
+# Falsch
+ollama create modell -f pfad/zur/datei.gguf
+
+# Richtig
+ollama create modell -f Modelfile
+```
+
+## Performance-Optimierung
+
+### Empfohlene Trainingsparameter für bessere Ergebnisse
+
+```bash
+# Für stabilere Modelle: Mehr Epochen und größere Batch-Größe
+python finetuning.py --epochen 5 --batch-groesse 4
+
+# Für mehr Trainingsdaten: Erweitere produktdaten_deutsch.json
+# Mindestens 100-200 Beispiele empfohlen für robuste Ergebnisse
+```
+
+### Modell-Performance verbessern
+
+1. **Mehr Trainingsdaten**: Mindestens 100+ diverse Beispiele
+2. **Längeres Training**: 5-10 Epochen statt 3
+3. **Konsistentes Format**: Alle Trainingsdaten im gleichen JSON-Schema
+4. **Parameter-Tuning bei Inferenz**:
+   - Temperature: 0.2-0.4 für konsistente Ausgaben
+   - Repeat penalty: 1.1-1.2 gegen Wiederholungen
+   - Top-p: 0.9 für Diversität
 
 ## Trainingszeit
 
-Geschätzte Trainingszeiten für 500 Beispiele, 3 Epochen:
-- Mit GPU (RTX 3060): ~15-30 Minuten
-- Mit GPU (RTX 4090): ~5-10 Minuten  
-- Ohne GPU (CPU): 2-4 Stunden
+Geschätzte Trainingszeiten für 3 Epochen:
+- **49 Beispiele** (wie in produktdaten_deutsch.json):
+  - RTX 4090: ~12 Sekunden
+  - RTX 3060: ~30-60 Sekunden
+- **500 Beispiele**:
+  - RTX 4090: ~2-5 Minuten
+  - RTX 3060: ~10-20 Minuten
+- **Ohne GPU (CPU)**: 10-50x langsamer
+
+**GGUF-Export** dauert zusätzlich ca. 5-10 Minuten (einmalig nach dem Training)
 
 ## Lizenz
 
