@@ -1,0 +1,31 @@
+# Ausgabe-Verzeichnis
+ausgabe/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Model files
+*.gguf
+*.bin
+*.safetensors
+
+# Unsloth cache
+unsloth_compiled_cache/
+
+# llama.cpp
+llama.cpp/
+
+# Modelfile
+Modelfile
