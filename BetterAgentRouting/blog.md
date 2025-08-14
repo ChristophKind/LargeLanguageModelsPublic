@@ -8,9 +8,10 @@ layout: Article
 project: christophkind.de
 category: blog
 date: 2024-09-26T14:00:00.000Z
-slug: /multi-agent-routing-wer-kommt-wann-dran
+slug: multi-agent-routing-wer-kommt-wann-dran
 syncwithcontentdb: true
-last_updated: 09.08.2025, 09:24:53
+main-image: title.png
+last_updated: 14.08.2025, 17:01:43
 ---
 # Wenn Chatbots plötzlich vergesslich werden: Drei clevere Lösungen für konsistente KI-Workflows
 

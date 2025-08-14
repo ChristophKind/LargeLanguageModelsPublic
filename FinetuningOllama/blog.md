@@ -1,11 +1,26 @@
 ---
-title: "Fine-Tuning von Large Language Models: Ein praktischer Leitfaden mit Python und Ollama"
-date: 2025-08-13
-author: "Christoph Kind"
-tags: ["LLM", "Fine-Tuning", "Python", "Ollama", "Machine Learning", "Phi-3"]
-description: "Lerne Schritt für Schritt, wie du Large Language Models für deine spezifischen Aufgaben fine-tunest und sie mit Ollama nutzt"
+title: 'Fine-Tuning von Large Language Models: Ein praktischer Leitfaden mit Python und Ollama'
+meta-title: 'LLM Fine-Tuning Tutorial: Python, LoRA & Ollama - Schritt-für-Schritt Anleitung'
+meta-description: Lerne in diesem praktischen Tutorial, wie du Large Language Models mit Python und LoRA fine-tunest, als GGUF exportierst und in Ollama integrierst. Mit vollständigem Code und Best Practices.
+summary: Dieser umfassende Leitfaden zeigt dir Schritt für Schritt, wie du Large Language Models für deine spezifischen Aufgaben fine-tunest. Du lernst die Verwendung von Python mit Unsloth, die Implementierung von LoRA-Adaptern für effizientes Training, den Export ins GGUF-Format und die Integration in Ollama für lokales Deployment. Mit praktischen Code-Beispielen, Performance-Tipps und einem vollständigen GitHub-Repository.
+date: 2025-08-13T00:00:00.000Z
+author: Christoph Kind
+tags:
+  - LLM
+  - Fine-Tuning
+  - Python
+  - Ollama
+  - Machine Learning
+  - Phi-3
+  - LoRA
+  - GGUF
+  - Unsloth
+description: Lerne Schritt für Schritt, wie du Large Language Models für deine spezifischen Aufgaben fine-tunest und sie mit Ollama nutzt
+syncwithcontentdb: true
+slug: fine-tuning-large-language-models-python-ollama
+main-image: title.png
+last_updated: 14.08.2025, 16:53:40
 ---
-
 # Fine-Tuning von Large Language Models: Ein praktischer Leitfaden mit Python und Ollama
 
 ## Artikel-Übersicht
